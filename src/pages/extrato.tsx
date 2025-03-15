@@ -32,7 +32,7 @@ function ExtratoPage(): ReactNode {
                     </div>
 
                     {/* Lista de transações com rolagem */}
-                    <ul className="flex flex-col overflow-y-auto max-h-[calc(100%-100px)] pr-2">
+                    <ul className="flex flex-col overflow-y-auto max-h-5/6 pr-2">
                         {transacoes.map((transacao, index) => (
                             <li key={index}>
                                 <div className="w-full my-3 p-4 rounded-2xl hover:translate-x-2 duration-150 hover:cursor-pointer bg-gray-700">

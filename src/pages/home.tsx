@@ -71,32 +71,32 @@ function HomePage(): ReactNode {
                 </section>
                 <section className="w-full px-7 pt-8 h-full shadow-[0_-6px_20px_rgba(0,0,0,0.3)] bg-background rounded-t-3xl">
                     <article className="w-full mb-8">
-                        <div className="justify-between flex flex-row mb-8 hover:cursor-pointer">
+                        <div className="justify-between flex flex-row hover:cursor-pointer">
                             <h1 className="text-3xl ">Serviços</h1>
                             <IoMdHelpCircleOutline style={{ width: 36, height: 36 }} />
                         </div>
-                        <div className="overflow-auto">
+                        <div className="overflow-auto mt-8">
                             <ul className="list-none flex flex-row ">
                                 <li className="flex flex-col justify-center hover:cursor-pointer items-center mr-4">
-                                    <div style={{backgroundColor: "#474747"}} className="h-28 w-28 bg-backgroundHintColor bg-customGray rounded-full mb-2 flex items-center justify-center">
+                                    <div style={{backgroundColor: "#474747"}} className="h-28 w-28 hover:-translate-y-1 duration-150 bg-backgroundHintColor bg-customGray rounded-full mb-2 flex items-center justify-center">
                                         <FaPix style={{ width: 76, height: 76 }} />
                                     </div>
                                     <p className="text-xl ">Pix</p>
                                 </li>
                                 <li className="flex flex-col justify-center hover:cursor-pointer items-center mx-4">
-                                    <div style={{backgroundColor: "#474747"}}  className="h-28 w-28 bg-backgroundHintColor rounded-full mb-2 flex items-center justify-center">
+                                    <div style={{backgroundColor: "#474747"}}  className="h-28 w-28 hover:-translate-y-1 duration-150 bg-backgroundHintColor rounded-full mb-2 flex items-center justify-center">
                                         <PiQrCode style={{ width: 76, height: 76 }} />
                                     </div>
                                     <p className="text-xl ">Pagar</p>
                                 </li>
                                 <li className="flex flex-col justify-center hover:cursor-pointer items-center mx-4">
-                                    <div style={{backgroundColor: "#474747"}} className="h-28 w-28 bg-backgroundHintColor rounded-full mb-2 flex items-center justify-center">
+                                    <div style={{backgroundColor: "#474747"}} className="h-28 w-28 hover:-translate-y-1 duration-150 bg-backgroundHintColor rounded-full mb-2 flex items-center justify-center">
                                         <PiHandDeposit style={{ width: 76, height: 76 }} />
                                     </div>
                                     <p className="text-xl ">Depósito</p>
                                 </li>
                                 <li className="flex flex-col justify-center hover:cursor-pointer items-center mx-4">
-                                    <div style={{backgroundColor: "#474747"}} className="h-28 w-28 bg-backgroundHintColor rounded-full mb-2 flex items-center justify-center">
+                                    <div style={{backgroundColor: "#474747"}} className="h-28 w-28 hover:-translate-y-1 duration-150 bg-backgroundHintColor rounded-full mb-2 flex items-center justify-center">
                                         <BiTransfer style={{ width: 76, height: 76 }} />
                                     </div>
                                     <p className="text-xl ">Transferência</p>
