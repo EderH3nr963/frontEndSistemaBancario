@@ -1,0 +1,22 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.back-to-top {
+    animation: back-to-top 0.5s linear;
+}
+
+@keyframes back-to-top {
+    25% {
+        transform: translateY(75%);
+    }
+    50% {
+        transform: translateY(50%);
+    }
+    75% {
+        transform: translateY(25%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
