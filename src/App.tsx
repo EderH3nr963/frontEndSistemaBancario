@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     if (!localStorage.getItem('token')) {
-      setIsLogged(false);
+      setIsLogged(true);
       return;
     }
 
@@ -55,7 +55,7 @@ function App() {
           </Route>
           <Route path="/auth" >
             <Route path="login" index element={!isLogged ? <LoginPage /> : <Navigate to="/" />} />
-            <Route path="forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="edit-password" element={<ForgotPasswordPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
