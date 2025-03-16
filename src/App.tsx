@@ -4,6 +4,8 @@ import ExtratoPage from "./pages/extrato";
 import LoginPage from "./pages/login";
 import ForgotPasswordPage from "./pages/forgotPassword";
 import { createContext, useEffect, useState } from "react";
+import PaymentsPage from "./pages/payments";
+import TranfersPage from "./pages/tranfers";
 
 // Criando um tipo para o contexto
 interface AuthContextType {
@@ -15,7 +17,7 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
 
   useEffect(() => {
     if (!localStorage.getItem('token')) {
@@ -52,9 +54,11 @@ function App() {
           <Route path="/" element={!isLogged && <Navigate to="/auth/login" />} >
             <Route path="" element={<HomePage />} />
             <Route path="/extrato" element={<ExtratoPage />} />
+            <Route path="/payments" element={<PaymentsPage />} />
+            <Route path="/tranfers" element={<TranfersPage />} />
           </Route>
           <Route path="/auth" >
-            <Route path="login" index element={!isLogged ? <LoginPage /> : <Navigate to="/" />} />
+            <Route path="login" index element={isLogged ? <LoginPage /> : <Navigate to="/" />} />
             <Route path="edit-password" element={<ForgotPasswordPage />} />
           </Route>
         </Routes>
