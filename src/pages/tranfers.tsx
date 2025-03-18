@@ -3,6 +3,7 @@ import { ReactNode, useState, useContext } from "react"
 import "../styles/animation.css";
 import backgroundImage from "../assets/background-cards.png"; // Importação correta
 import { AuthContext } from "../App";
+import CustomButton from "../components/button";
 
 function TranfersPage(): ReactNode {
     const [barCode, setBarCode] = useState("");
@@ -33,9 +34,9 @@ function TranfersPage(): ReactNode {
                     </div>
 
                     <div className="flex justify-end">
-                        <button className="px-7 py-2 rounded-full text-lg bg-tertiary hover:cursor-pointer" onClick={() => null} disabled={disabledButton}>
-                            Next
-                        </button>
+                        <CustomButton onClick={() => null} disabled={disabledButton}>
+                            Continuar
+                        </CustomButton>
                     </div>
                 </section>
             </main>

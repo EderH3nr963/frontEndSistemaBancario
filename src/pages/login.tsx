@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles/animation.css";
 import backgroundImage from "../assets/background-cards.png"; // Importação correta
 import { AuthContext } from "../App";
+import CustomButton from "../components/button";
 
 interface FormData {
     cpf: string;
@@ -52,7 +53,7 @@ function LoginPage(): ReactNode {
 
     return (
         <div
-            className="grid bg-primary min-h-screen  font-[family-name:var(--font-geist-sans)]"
+            className="grid bg-primary min-h-screen  font-[family-name:var(--font-geist-sans)] "
             style={{ background: `url(${backgroundImage}) no-repeat 50% 50%`, backgroundSize: '100%' }}
         >
             <main className="flex items-center justify-center">
@@ -86,9 +87,9 @@ function LoginPage(): ReactNode {
                     </div>
 
                     <div className="flex justify-end">
-                        <button className="px-7 py-2 rounded-full text-lg bg-tertiary hover:cursor-pointer" onClick={() => handleSubmit} disabled={disabledButton}>
-                            Login
-                        </button>
+                        <CustomButton onClick={handleSubmit} disabled={disabledButton}>
+                            Entrar
+                        </CustomButton>
                     </div>
                 </section>
             </main>

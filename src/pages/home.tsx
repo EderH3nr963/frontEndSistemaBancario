@@ -6,12 +6,19 @@ import { FaPix } from "react-icons/fa6";
 import { PiHandDeposit } from "react-icons/pi";
 import { PiQrCode } from "react-icons/pi";
 import { BiTransfer } from "react-icons/bi";
+import { gsap } from "gsap";
 
 
 function HomePage(): ReactNode {
     const [textButton, setTextButton] = useState("");
     const timeouts = useRef<number[]>([]);
     const navigate = useNavigate();
+
+    const servicos = [
+        { icon: FaPix, textServico: 'Pix', rota: '' },
+        { icon: PiQrCode, textServico: 'Pagar', rota: '/pagar' },
+        { icon: BiTransfer, textServico: 'Transferir', rota: '' },
+    ]
 
     useEffect(() => {
         // Certifique-se de que o código só execute no lado do cliente
@@ -49,8 +56,29 @@ function HomePage(): ReactNode {
         setTextButton(""); // Reseta o texto
     };
 
+    // Animação para os icons de serviço
+    useEffect(() => {
+        const tl = gsap.timeline(); 
+    
+        tl.from(".card-servico", {
+            opacity: 0,
+            x: -1000,
+            duration: 1
+        });
+    
+        servicos.forEach((servico, index) => {
+            tl.to(`#${servico.textServico.toLowerCase()}`, {
+                opacity: 1,
+                x: 0,
+                duration: 0.2,
+                delay: index * 0.2, // Anima cada um com um pequeno atraso
+            });
+        });
+    
+    }, []);
+
     return (
-        <div className="grid bg-primary min-h-screen  font-[family-name:var(--font-geist-sans)]">
+        <div className="grid bg-primary min-w-screen min-h-screen font-[family-name:var(--font-geist-sans)]">
             <main className="flex flex-col  justify-between">
                 <section className="h-3/6 mx-10 my-16 flex-col-reverse sm:flex-row flex sm:items-center justify-end sm:justify-between items-start m-4">
                     <div className="bg-background rounded-full shadow-2xl w-1/3 h-28 flex items-center p-3 justify-between">
@@ -71,36 +99,24 @@ function HomePage(): ReactNode {
                 </section>
                 <section className="w-full px-7 pt-8 h-full shadow-[0_-6px_20px_rgba(0,0,0,0.3)] bg-background rounded-t-3xl">
                     <article className="w-full mb-8">
-                        <div className="justify-between flex flex-row hover:cursor-pointer">
+                        <div className="justify-between flex flex-row hover:cursor-pointer mr-5">
                             <h1 className="text-3xl ">Serviços</h1>
                             <IoMdHelpCircleOutline style={{ width: 36, height: 36 }} />
                         </div>
-                        <div className="overflow-auto mt-8">
-                            <ul className="list-none flex flex-row ">
-                                <li className="flex flex-col justify-center hover:cursor-pointer items-center mr-4">
-                                    <div style={{backgroundColor: "#474747"}} className="h-28 w-28 hover:-translate-y-1 duration-150 bg-backgroundHintColor bg-customGray rounded-full mb-2 flex items-center justify-center">
-                                        <FaPix style={{ width: 76, height: 76 }} />
-                                    </div>
-                                    <p className="text-xl ">Pix</p>
-                                </li>
-                                <li className="flex flex-col justify-center hover:cursor-pointer items-center mx-4">
-                                    <div style={{backgroundColor: "#474747"}}  className="h-28 w-28 hover:-translate-y-1 duration-150 bg-backgroundHintColor rounded-full mb-2 flex items-center justify-center">
-                                        <PiQrCode style={{ width: 76, height: 76 }} />
-                                    </div>
-                                    <p className="text-xl ">Pagar</p>
-                                </li>
-                                <li className="flex flex-col justify-center hover:cursor-pointer items-center mx-4">
-                                    <div style={{backgroundColor: "#474747"}} className="h-28 w-28 hover:-translate-y-1 duration-150 bg-backgroundHintColor rounded-full mb-2 flex items-center justify-center">
-                                        <PiHandDeposit style={{ width: 76, height: 76 }} />
-                                    </div>
-                                    <p className="text-xl ">Depósito</p>
-                                </li>
-                                <li className="flex flex-col justify-center hover:cursor-pointer items-center mx-4">
-                                    <div style={{backgroundColor: "#474747"}} className="h-28 w-28 hover:-translate-y-1 duration-150 bg-backgroundHintColor rounded-full mb-2 flex items-center justify-center">
-                                        <BiTransfer style={{ width: 76, height: 76 }} />
-                                    </div>
-                                    <p className="text-xl ">Transferência</p>
-                                </li>
+                        <div className="">
+                            <ul className="flex flex-row overflow-x-auto max-w-[calc(100vw-71px)] mt-8 py-2 row-auto">
+                                {
+                                    servicos.map((servico, index) => {
+                                        return (
+                                            <li className="flex flex-col justify-center items-center mr-4 card-servico" id={servico.textServico.toLowerCase()}>
+                                                <div onClick={() => navigate(servico.rota)} className="h-28 w-28 bg-[#474747] hover:cursor-pointer hover:-translate-y-1 duration-150 bg-backgroundHintColor bg-customGray rounded-full mb-2 flex items-center justify-center" >
+                                                    <servico.icon style={{ width: 76, height: 76 }} />
+                                                </div>
+                                                <p className="text-xl ">{servico.textServico}</p>
+                                            </li>
+                                        )
+                                    })
+                                }
                             </ul>
                         </div>
                     </article>
@@ -109,7 +125,7 @@ function HomePage(): ReactNode {
                             <h1 className="text-3xl ">Cartões</h1>
                         </div>
                         <div className="">
-                            <ul className="list-none ml-4 flex flex-row">
+                            <ul className="list-none pt-4 py-2 flex flex-row overflow-x-auto max-w-[calc(100vw-71px)]" >
                                 {/* Cartão design */}
                                 <li className="flex flex-col justify-center hover:cursor-pointer items-center mr-4">
                                     <div className="h-44 w-72 bg-secondary rounded-2xl mb-2 hover:-translate-y-3 duration-200 flex items-center justify-center">

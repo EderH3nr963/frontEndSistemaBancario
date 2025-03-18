@@ -1,9 +1,9 @@
-::-webkit-scrollbar {
-    display: none;
-}
 
 .back-to-top {
-    animation: back-to-top 0.5s linear;
+    animation: back-to-top 0.4s forwards linear;
+    transform: translateY(100%);
+    transform: translateY(100%);
+    opacity: 0;
 }
 
 @keyframes back-to-top {
@@ -18,5 +18,6 @@
     }
     100% {
         transform: translateY(0);
+        opacity: 1;
     }
 }

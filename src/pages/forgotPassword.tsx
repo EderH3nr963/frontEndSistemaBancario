@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import axios from "axios";
 import "../styles/animation.css";
 import backgroundImage from "../assets/background-cards.png"; // Importação correta
+import CustomButton from "../components/button";
 
 interface FormData {
     password: string;
@@ -34,8 +35,8 @@ function ForgotPasswordPage(): ReactNode {
             const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/sign-in`, form);
             localStorage.setItem("token", response.data.token);
         } catch (error: unknown) {
-            if (axios.isAxiosError(error)) return setErrorMessage(error.response?.data?.message || "Erro desconhecido");
-            setErrorMessage("Erro desconhecido");
+            if (axios.isAxiosError(error)) setErrorMessage(error.response?.data?.message || "Erro desconhecido")
+            else setErrorMessage("Erro desconhecido");
         } finally {
             setDisabledButton(false);
         }
@@ -75,8 +76,8 @@ function ForgotPasswordPage(): ReactNode {
                                 className="p-2 text-white outline-0 border-b-1 border-white w-full text-lg"
                                 placeholder="Código de verificação"
                                 maxLength={6}
-                                onChange={(e) => setForm({ 
-                                    ...form, 
+                                onChange={(e) => setForm({
+                                    ...form,
                                     code: Number(e.target.value.replace(/[^\d]/g, "")) || null
                                 })}
                                 value={form.code?.toString()}
@@ -89,13 +90,9 @@ function ForgotPasswordPage(): ReactNode {
                     </div>
 
                     <div className="flex justify-end">
-                        <button
-                            className="px-7 py-2 rounded-full text-lg bg-tertiary hover:cursor-pointer relative"
-                            onClick={handleSubmit}
-                            disabled={disabledButton}
-                        >
+                        <CustomButton onClick={handleSubmit} disabled={disabledButton}>
                             Alterar
-                        </button>
+                        </CustomButton>
                     </div>
                 </section>
             </main>

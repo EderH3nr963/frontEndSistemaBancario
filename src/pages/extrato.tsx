@@ -32,10 +32,10 @@ function ExtratoPage(): ReactNode {
                     </div>
 
                     {/* Lista de transações com rolagem */}
-                    <ul className="flex flex-col overflow-y-auto max-h-5/6 pr-2">
+                    <ul className="flex flex-col overflow-y-auto max-h-[calc(100%-108px)] pr-2 bar-">
                         {transacoes.map((transacao, index) => (
                             <li key={index}>
-                                <div className="w-full my-3 p-4 rounded-2xl hover:translate-x-2 duration-150 hover:cursor-pointer bg-gray-700">
+                                <div className="w-full my-3 p-4 rounded-2xl hover:translate-x-2 duration-150 hover:cursor-pointer bg-[#474747]">
                                     <div className="flex justify-between">
                                         <span className="text-2xl">{transacao.tipo}</span>
                                         <span className={`text-2xl ${transacao.valor.startsWith('-') ? 'text-red-400' : 'text-green-300'}`}>
